@@ -3,11 +3,11 @@ import sys
 import os
 
 sys.path.append(os.path.dirname(__file__))
-import handler, utils
-
+import handler, utils, gui
 
 @click.group()
 def main():
+    gui.rich_logo()
     utils.check_docker_engine()
     pass
     # ctx.ensure_object(dict)
@@ -33,11 +33,11 @@ def save(ctx, folder, includes, excludes, debug):
         ids.start()
 
 @main.command()
-@click.option('-f', '--folder', type=str, required=True, help='Path to the folder.')
-@click.option('-c', '--compose-file', type=click.Path(exists=True), help='Path to compose file.', required=True)
+@click.option('-f', '--folder', type=click.Path(exists=True), required=True, help='Path to the folder.')
+@click.option('-c', '--compose-file', type=click.Path(exists=True), help='Path to compose file.')
 @click.option('--debug', is_flag=True, default=False, help="Only display the information.")
 @click.pass_context
-def load(ctx, folder, compose_file):
+def load(ctx, folder, compose_file, debug):
     ids = handler.DockerLoader(
         folder=folder,
         compose_file=compose_file

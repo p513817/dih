@@ -1,5 +1,9 @@
 import rich
+from rich import box
+from rich.align import Align
+from rich.text import Text
 from rich.console import Console
+from rich.panel import Panel
 from rich.table import Table
 from rich.progress import (
     Progress, 
@@ -12,12 +16,28 @@ from rich.progress import (
     SpinnerColumn
 )
 
+LOGO = \
+r'''
+██████╗ ██╗██╗  ██╗
+██╔══██╗██║██║  ██║
+██║  ██║██║███████║
+██║  ██║██║██╔══██║
+██████╔╝██║██║  ██║
+╚═════╝ ╚═╝╚═╝  ╚═╝
+'''
+
+def rich_logo(ver:str=""):
+    console = Console()
+    logo = LOGO if ver=="" else f"{LOGO}v{ver}"
+    panel = Panel(Text(logo, justify="left"), box=box.SIMPLE_HEAD)
+    console.print(panel)
+
 class RichTable:
     """A wrapper for Rich Table, more easy to use"""
     
     def __init__(self):
         self.console = Console()
-        self.table = Table(title="List of Inno Docker")
+        self.table = Table()
         self.headers = []
 
     def define(self, headers: list):
@@ -39,10 +59,9 @@ class RichTable:
         self.table.add_row(*[ f"{ss}{value}{es}" for value in values ])
 
     def print_out(self):
-        """Show the table
-        """
+        """Show the table"""
         # self.console.clear()
-        print('\n')
+        # self.console.print(Align(self.table, align='center'))
         self.console.print(self.table)
 
 def get_rich_progress():
