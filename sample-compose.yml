@@ -1,0 +1,63 @@
+# YAML
+version: '3.7'
+services:
+  rtsp:
+    image: innodiskorg/rtsp-server:v0.23.7
+    network_mode: host
+    volumes: 
+      - ./rtsp-config.yml:/mediamtx.yml
+  webrtc:
+    image: innodiskorg/rtsptoweb:latest
+    network_mode: host
+    volumes:
+      - ./webrtc-config.json:/config/config.json
+    depends_on:
+      - rtsp
+  nginx:
+    image: innodiskorg/ivit-i-nginx:1.23.4-bullseye
+    network_mode: host
+    volumes:
+      - ./nginx-config.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - NG_PORT=6632
+      - API_PORT=819
+      - RTC_PORT=8083
+  website:
+    image: innodiskorg/ivit-i-website:v130
+    network_mode: host
+    environment:
+      - NGINX_PORT=8001
+      - BACKEND_PORT=6632
+      - STREAM_PORT=8083
+    command: >
+      /bin/sh -c
+      "envsubst '
+      $${NGINX_PORT}
+      $${BACKEND_PORT}
+      $${STREAM_PORT}
+      '< /etc/nginx/nginx.conf.template
+      > /etc/nginx/nginx.conf
+      && nginx -g 'daemon off;'"
+  # coturn:
+  #   image: innodiskorg/coturn:4.6
+  #   ports:
+  #     - 3478:3478
+  #     - 3478:3478/udp
+  #     - 5349:5349
+  #     - 5349:5349/udp
+  #     - 49160-49200:49160-49200/udp
+  #   command: >
+  #     -n --log-file=stdout \
+  #     --min-port=49160 --max-port=49200 \
+  #     --lt-cred-mech \
+  #     --user=turnguest:turnguestpass --realm=xxx \
+  #     --allow-loopback-peers --fingerprint --no-cli
+  mosquitto:
+    image: innodiskorg/mosquitto:2.0.18
+    ports:
+      - "6683:1883"
+      - "9633:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
