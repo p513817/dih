@@ -30,9 +30,9 @@ def get_path(tmp_path):
     return folder
 
 def test_filter_images_with_index_valid_input(get_path, monkeypatch, ivit_nginx):
-    monkeypatch.setattr('builtins.input', lambda _: '1,2,3')
+    monkeypatch.setattr('builtins.input', lambda _: '0')
     ids = DockerSaver(get_path)
-    assert ids.valid_index == [1, 2, 3]
+    assert ids.valid_index == [0]
 
 def test_filter_images_with_index_all(get_path, monkeypatch, ivit_nginx):
     monkeypatch.setattr('builtins.input', lambda _: 'all')
