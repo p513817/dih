@@ -43,7 +43,6 @@ For developer.
 
 ## Testing
 ```bash
-<<<<<<< HEAD
 pytest -v
 pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
 ```
@@ -52,9 +51,6 @@ pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=
 ```bash
 python setup.py sdist bdist_wheel
 pip3 install --force-reinstall dist/dih-*.whl
+twine upload dist/*
+
 ```
-=======
-pip3 install pyinstaller==6.3.0
-pyinstaller -F src/main.py -n DIH
-```
->>>>>>> origin/master
