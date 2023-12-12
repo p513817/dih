@@ -2,7 +2,8 @@
 Help to save and load docker image.
 
 ![cover](./assets/load-docker-image.png)
-[![codecov](https://app.codecov.io/gh/p513817/dih/branch/master/graph/badge.svg?token=26rjsu2prW)](https://codecov.io/gh/p513817/dih)
+---
+[![codecov](https://codecov.io/gh/p513817/dih/graph/badge.svg?token=26rjsu2prW)](https://codecov.io/gh/p513817/dih)
 
 # Requirements
 * `python 3.10`
