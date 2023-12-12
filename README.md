@@ -2,6 +2,7 @@
 Help to save and load docker image.
 
 ![cover](./assets/cover.png)
+[![codecov](https://codecov.io/gh/p513817/dih/graph/badge.svg?token=26rjsu2prW)](https://codecov.io/gh/p513817/dih)
 
 # Usage
 * Install module
@@ -42,6 +43,7 @@ For developer.
 
 ## Testing
 ```bash
+<<<<<<< HEAD
 pytest -v
 pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
 ```
@@ -51,3 +53,8 @@ pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=
 python setup.py sdist bdist_wheel
 pip3 install --force-reinstall dist/dih-*.whl
 ```
+=======
+pip3 install pyinstaller==6.3.0
+pyinstaller -F src/main.py -n DIH
+```
+>>>>>>> origin/master
