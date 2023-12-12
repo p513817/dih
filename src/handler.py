@@ -333,21 +333,23 @@ class DockerLoader(Wrapper):
 
         return tarballs
 
-
     def __init__(self, folder: str, compose_file: Optional[str]=None):
         # Init
         super().__init__(folder)
         self.handler = docker_helper.HandleDockerImage()
         
         # Find tar
-        tarballs = self.find_tars( self.folder )
+        self.data = self.find_tars( self.folder )
 
-        # Get docker compose file 
-        compose_handler = docker_helper.DockerComposeHandler(compose_file)
-        services = compose_handler.get_images()
-        
         # Validate with tarball and service from compose
-        self.data = self.verify_services(tarballs, services)
+        if compose_file:
+            compose_handler = \
+                docker_helper.DockerComposeHandler(compose_file)            
+            self.verify_services(self.data, compose_handler.get_images())
+
+        else:
+            for idx, tar in self.data.items():
+                self.data[idx]['verify'] = 1
 
         # Rich
         self.define_table()
