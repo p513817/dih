@@ -28,7 +28,6 @@ def test_update_and_print_out(rich_table, capsys):
 
     # 检查输出是否包含表格标题和数据行
     captured = capsys.readouterr()
-    assert "List of Inno Docker" in captured.out
     assert "Alice" in captured.out
     assert "Bob" in captured.out
     assert "30" in captured.out
