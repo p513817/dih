@@ -35,12 +35,14 @@ def save(ctx, folder, includes, excludes, debug):
 @main.command()
 @click.option('-f', '--folder', type=click.Path(exists=True), required=True, help='Path to the folder.')
 @click.option('-c', '--compose-file', type=click.Path(exists=True), help='Path to compose file.')
+@click.option('-s', '--select', is_flag=True, default=False, help="Select by index.")
 @click.option('--debug', is_flag=True, default=False, help="Only display the information.")
 @click.pass_context
-def load(ctx, folder, compose_file, debug):
+def load(ctx, folder, compose_file, select, debug):
     ids = handler.DockerLoader(
         folder=folder,
-        compose_file=compose_file
+        compose_file=compose_file,
+        manual=select
     )
     if not debug:
         ids.start()

@@ -21,6 +21,7 @@ class Wrapper(abc.ABC):
 
     _folder = ""
     _processes = defaultdict()
+    _valid_index = []
 
     def __init__(self, folder: str):
         self.folder = folder
@@ -55,11 +56,6 @@ class Wrapper(abc.ABC):
     def start(self):
         pass
 
-
-class DockerSaver(Wrapper):
-    """ Define save innodisk docker behavior """
-    _valid_index = []
-
     @property
     def valid_index(self):
         return self._valid_index
@@ -71,7 +67,7 @@ class DockerSaver(Wrapper):
             return
         raise TypeError("The valid_index should be list.")
 
-    def filter_images_with_index(self, data:dict) -> list:
+    def filter_with_index(self, data:dict) -> list:
         
         if not data:
             raise ValueError("No docker images find. Please init the object first.")
@@ -106,6 +102,11 @@ class DockerSaver(Wrapper):
 
         print('Validated Index: ', _valid_index)
         return _valid_index
+
+
+class DockerSaver(Wrapper):
+    """ Define save innodisk docker behavior """
+
 
     def define_table(self):
         # Define rich parameters
@@ -178,7 +179,7 @@ class DockerSaver(Wrapper):
         self.update_table(self.data)
 
         # Additional
-        self.valid_index = self.filter_images_with_index(self.data)
+        self.valid_index = self.filter_with_index(self.data)
 
 
 class DockerLoader(Wrapper):
@@ -247,8 +248,12 @@ class DockerLoader(Wrapper):
         rich_process = defaultdict()
 
         for idx, tar in self.data.items():
+            
+            # Conditions
             if not tar["verify"]: continue
-
+            if self.valid_index and not (idx in self.valid_index):
+                continue
+            
             self._processes[idx] = {
                 "id": tar["base_name"],
                 "proc": self.handler.load(os.path.realpath(tar["input"])),
@@ -333,27 +338,38 @@ class DockerLoader(Wrapper):
 
         return tarballs
 
-    def __init__(self, folder: str, compose_file: Optional[str]=None):
+    def allow_all_tarballs(self, data):
+        for idx, tar in data.items():
+            data[idx]['verify'] = 1
+
+    def __init__(self, folder: str, compose_file: Optional[str]=None, manual: bool=False):
         # Init
         super().__init__(folder)
         self.handler = docker_helper.HandleDockerImage()
         
         # Find tar
-        self.data = self.find_tars( self.folder )
+        tarballs = self.find_tars( self.folder )
 
         # Validate with tarball and service from compose
         if compose_file:
             compose_handler = \
                 docker_helper.DockerComposeHandler(compose_file)            
-            self.verify_services(self.data, compose_handler.get_images())
-
+            self.verify_services(
+                tarballs, 
+                compose_handler.get_images())
         else:
-            for idx, tar in self.data.items():
-                self.data[idx]['verify'] = 1
+            self.allow_all_tarballs(tarballs)
+
+        # Update data variable
+        self.data = tarballs
 
         # Rich
         self.define_table()
         self.update_table()
+
+        # Add manual select
+        if manual:
+            self.valid_index = self.filter_with_index(self.data)
 
 
 TEST_FOLDER='./archives'
