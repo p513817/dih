@@ -9,7 +9,7 @@ import docker
 sys.path.append(os.path.dirname(__file__))
 from utils import is_name_excludes, is_name_includes, YamlFile
 
-class DockerFinder:
+class FindDockerImage:
     """Find docker image via specific rule."""
 
     def find(self, includes: Optional[list]=None, excludes: Optional[list]=None) -> dict[dict]:
@@ -58,7 +58,7 @@ class DockerFinder:
         
         return valid_images
 
-class DockerSaver:
+class SaveDockerImage:
     """An object to save docker image"""
 
     def save(self, image_name:str, output_file:str, wait:bool=False):
@@ -72,7 +72,7 @@ class DockerSaver:
         else:
             return proc
 
-class DockerLoader:
+class LoadDockerImage:
     """An object to load docker image"""
 
     def load(self, input_file: str, wait:bool=False):
@@ -86,13 +86,13 @@ class DockerLoader:
         else:
             return proc
         
-class DockerHandler(DockerFinder, DockerSaver, DockerLoader):
+class HandleDockerImage(FindDockerImage, SaveDockerImage, LoadDockerImage):
     """Docker Handler with several features
 
     Args:
-        DockerFinder: find the docker image with specific rule.
-        DockerSaver: Save the docker image with the image name.
-        DockerLoader: Load the docker image with tarball file.
+        FindDockerImage: find the docker image with specific rule.
+        SaveDockerImage: Save the docker image with the image name.
+        LoadDockerImage: Load the docker image with tarball file.
     """
 
 # ========================
