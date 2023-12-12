@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='dih',
-    version='0.0.1',
+    version='0.0.1.1',
     packages=['src'],
     python_requires='>=3.8',
     install_requires=requirements,
