@@ -32,7 +32,7 @@ pip install dih
     ```
 * Load docker image with manual selection
     ```bash
-    python3 src/main.py load -f ./archives --select
+    dih load -f ./archives --select
     ```
 * Load docker image with specific folder and verify with compose file.
     ```bash
