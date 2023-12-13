@@ -6,7 +6,7 @@ current_dir = os.path.dirname(__file__)
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
 
-from src.gui import RichTable
+from src.dih.gui import RichTable
 
 @pytest.fixture
 def rich_table():

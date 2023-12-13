@@ -8,7 +8,7 @@ current_dir = os.path.dirname(__file__)
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
 
-from src.docker_helper import FindDockerImage, SaveDockerImage, LoadDockerImage, is_name_includes, is_name_excludes
+from src.dih.docker_helper import FindDockerImage, SaveDockerImage, LoadDockerImage, is_name_includes, is_name_excludes
 
 @pytest.fixture(scope="module")
 def docker_client():

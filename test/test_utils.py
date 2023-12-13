@@ -5,7 +5,7 @@ import sys
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
-from src import utils
+from src.dih import utils
 
 def test_convert_bytes():
     # 测试不需要文本形式的情况
