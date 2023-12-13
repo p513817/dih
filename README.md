@@ -2,7 +2,6 @@
 
 ![cover](./assets/cover.png)
 # DIH: Docker Image Handler
-Help to save and load docker image.
 **A tool to save and load the docker image tarball file.**
 
 ![GitHub License](https://img.shields.io/github/license/p513817/dih)
