@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dih"
+version = "0.0.1.2"
+description = "A tool to save and load the docker image tarball file"
+authors = [
+  {name = "Max Chang", email = "p513817@gmail.com"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = [
+    "certifi==2023.11.17",
+    "charset-normalizer==3.3.2",
+    "click==8.1.7",
+    "coverage==7.3.2",
+    "docker==7.0.0",
+    "exceptiongroup==1.2.0",
+    "idna==3.6",
+    "iniconfig==2.0.0",
+    "markdown-it-py==3.0.0",
+    "mdurl==0.1.2",
+    "packaging==23.2",
+    "pluggy==1.3.0",
+    "Pygments==2.17.2",
+    "pytest==7.4.3",
+    "pytest-cov==4.1.0",
+    "PyYAML==6.0.1",
+    "requests==2.31.0",
+    "rich==13.7.0",
+    "tomli==2.0.1",
+    "urllib3==2.1.0"
+]
+
+
+[project.scripts]
+spam-cli = "spam:main_cli"
+
+[project.urls]
+Homepage = "https://github.com/p513817/dih"
+Issues = "https://github.com/p513817/dih/issues"
