@@ -1,6 +1,6 @@
 <div align="center">
 
-![cover](./assets/cover.png)
+![cover](https://github.com/p513817/dih/blob/master/assets/cover.png?raw=true)
 # DIH: Docker Image Handler
 **A tool to save and load the docker image tarball file.**
 
@@ -41,7 +41,7 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-load-select.png' width='auto' height=200px alt>
+        <img src='https://github.com/p513817/dih/blob/master/assets/dih-load-select.png?raw=true' width='auto' height=200px alt>
         <br>
         <em>Enter the index of the docker images...</em>
         </p>
@@ -56,7 +56,7 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-load-compose.png' width='auto' height=250px alt>
+        <img src='https://github.com/p513817/dih/blob/master/assets/dih-load-compose.png?raw=true' width='auto' height=250px alt>
         <br>
         <em>Verify with compose file and only load the verified indexes...</em>
         </p>
@@ -78,7 +78,7 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-save-with-rule.png' width='auto' height=200px alt>
+        <img src='https://github.com/p513817/dih/blob/master/assets/dih-save-with-rule.png?raw=true' width='auto' height=200px alt>
         <br>
         <em>dih save -f ./archives -inc rtsp -exc none...</em>
         </p>
