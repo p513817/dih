@@ -18,14 +18,17 @@
 </div>
 
 ## Requirements
-* `python >3.8`
+* python >=3.8
+* [Virtualenv, VirtualenvWrapper](./assets/install-venv.md)
 
 ## Install module with PyPI
 ```bash
+mkvirtualenv dih
 pip install dih
 ```
 
 ## Load docker image with tarball file
+
 * Load docker image with specific folder or file
     ```bash
     dih load -f ./archives
@@ -34,20 +37,73 @@ pip install dih
     ```bash
     dih load -f ./archives --select
     ```
+    <details>
+    <summary>Sample</summary>
+    <br>
+        <p>
+        <img src='./assets/dih-load-select.png' alt>
+        <em>Enter the index of the docker images...</em>
+        </p>
+    </details>
+    <br>
+
 * Load docker image with specific folder and verify with compose file.
     ```bash
     dih load -f ./archives -c <path/to/compose>
     ```
-## Save docker image with tarball file
+    <details>
+    <summary>Sample</summary>
+    <br>
+        <p>
+        <img src='./assets/dih-load-compose.png' alt>
+        <em>Verify with compose file and only load the verified indexes...</em>
+        </p>
+    </details>
+    <br>
+    
+
+## Save docker image into tarball file
 * Save docker image into tarball file.
     ```bash
     dih save -f ./archives
-    # Select the index of the docker images
     ```
-* Save specific docker image into tarball file.
+* Filter with specific rule, includes something and excludes something.
     ```bash
-    # dih save -f ./archives -inc <include keys> -exc <exclude keys>
     dih save -f ./archives -inc innodisk -exc none
+    ```
+    
+    <details>
+    <summary>Sample</summary>
+    <br>
+        <p>
+        <img src='./assets/dih-save-with-rule.png' alt>
+        <em>dih save -f ./archives -inc rtsp -exc none...</em>
+        </p>
+    </details>
+    <br>
+
+## More detail
+* `dih load --help`
+    ```bash
+    Usage: dih load [OPTIONS]
+    
+    Options:
+    -f, --folder PATH        Path to the folder.  [required]
+    -c, --compose-file PATH  Path to compose file.
+    -s, --select             Select by index.
+    --debug                  Only display the information.
+    --help                   Show this message and exit.
+    ```
+* `dih save --help`
+    ```bash
+    Usage: dih save [OPTIONS]
+
+    Options:
+    -f, --folder TEXT      Path to the folder.  [required]
+    -inc, --includes TEXT  Include keys.
+    -exc, --excludes TEXT  Exclude keys.
+    --debug                Only display the information.
+    --help                 Show this message and exit.
     ```
 
 # For Developer
@@ -64,16 +120,9 @@ pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=
 ```
 
 ## Distribute
-* Current
-    ```bash
-    python3 -m pip install --upgrade build
-    sudo apt install python3.10-venv
-    python3 -m build
-    twine upload dist/*
-    ```
-* Legacy
-    ```bash
-    python setup.py sdist bdist_wheel
-    pip3 install --force-reinstall dist/dih-*.whl
-    twine upload dist/*
-    ```
+```bash
+python3 -m pip install --upgrade build
+sudo apt install python3.10-venv
+python3 -m build
+twine upload dist/*
+```
