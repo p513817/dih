@@ -41,7 +41,8 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-load-select.png' alt>
+        <img src='./assets/dih-load-select.png' width='auto' height=200px alt>
+        <br>
         <em>Enter the index of the docker images...</em>
         </p>
     </details>
@@ -55,7 +56,8 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-load-compose.png' alt>
+        <img src='./assets/dih-load-compose.png' width='auto' height=250px alt>
+        <br>
         <em>Verify with compose file and only load the verified indexes...</em>
         </p>
     </details>
@@ -76,7 +78,8 @@ pip install dih
     <summary>Sample</summary>
     <br>
         <p>
-        <img src='./assets/dih-save-with-rule.png' alt>
+        <img src='./assets/dih-save-with-rule.png' width='auto' height=200px alt>
+        <br>
         <em>dih save -f ./archives -inc rtsp -exc none...</em>
         </p>
     </details>
