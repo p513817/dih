@@ -42,9 +42,8 @@ dependencies = [
     "urllib3==2.1.0"
 ]
 
-
 [project.scripts]
-spam-cli = "spam:main_cli"
+dih = "dih.main:main"
 
 [project.urls]
 Homepage = "https://github.com/p513817/dih"
