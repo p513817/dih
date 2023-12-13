@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dih"
-version = "0.0.1.2"
+version = "0.0.1.3"
 description = "A tool to save and load the docker image tarball file"
 authors = [
   {name = "Max Chang", email = "p513817@gmail.com"},
@@ -15,6 +15,8 @@ license = {file = "LICENSE"}
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.10",
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",
     "Operating System :: POSIX :: Linux",
