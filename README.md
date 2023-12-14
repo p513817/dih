@@ -17,13 +17,10 @@
 
 </div>
 
-## Requirements
-* python >=3.8
-* [Virtualenv, VirtualenvWrapper](./assets/install-venv.md)
-
 ## Install module with PyPI
+[Virtualenv, VirtualenvWrapper](./assets/install-venv.md) is recommended.
+
 ```bash
-mkvirtualenv dih
 pip install dih
 ```
 
