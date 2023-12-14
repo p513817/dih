@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dih"
-version = "0.0.1.3"
+version = "0.0.1.4"
 description = "A tool to save and load the docker image tarball file"
 authors = [
   {name = "Max Chang", email = "p513817@gmail.com"},
