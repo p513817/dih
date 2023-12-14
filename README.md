@@ -109,12 +109,35 @@ pip install dih
     --help                 Show this message and exit.
     ```
 
-# For Developer
-## Requirements
-* `python 3.10`
-* [Virtualenv, VirtualenvWrapper](./assets/install-venv.md)
-* `mkvirtualenv dih`
-* `pip install -r requirements.txt`
+# For Local Developer
+* Requirements
+    * `python 3.10`
+    * [Virtualenv, VirtualenvWrapper](./assets/install-venv.md)
+* Usage
+    ```bash
+    mkvirtualenv dih
+    pip install -r requirements.txt
+    ```
+# For Developer ( Docker )
+* Requirements
+    * `Docker engine`
+* Usage
+    * Help
+        ```bash
+        Usage: ./docker/handler.sh [mode] [ubuntu] [command]
+            
+        Options:
+            - mode: build|run
+            - ubuntu: focal|20.04|jammy|22.04
+            - command: only supported when 'handler.sh run'. e.g."bash" 
+        ```
+    * For example
+        ```bash
+        # Build docker image
+        ./docker/handler.sh build focal
+        # Run docker container with specific version and command
+        ./docker/handler.sh run focal "bash" 
+        ```
 
 ## Testing
 ```bash
