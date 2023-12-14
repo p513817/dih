@@ -46,7 +46,6 @@ pip install dih
         <em>Enter the index of the docker images...</em>
         </p>
     </details>
-    <br>
 
 * Load docker image with specific folder and verify with compose file.
     ```bash
@@ -60,9 +59,7 @@ pip install dih
         <br>
         <em>Verify with compose file and only load the verified indexes...</em>
         </p>
-    </details>
-    <br>
-    
+    </details>    
 
 ## Save docker image into tarball file
 * Save docker image into tarball file.
@@ -83,7 +80,6 @@ pip install dih
         <em>dih save -f ./archives -inc rtsp -exc none...</em>
         </p>
     </details>
-    <br>
 
 ## More detail
 * `dih load --help`
