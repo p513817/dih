@@ -7,7 +7,7 @@
 ![GitHub License](https://img.shields.io/github/license/p513817/dih)
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/p513817/dih/test.yml)
 ![GitHub tag checks state](https://img.shields.io/github/checks-status/p513817/dih/master)
-![GitHub issues](https://img.shields.io/github/issues/p513817/dih)
+![GitHub Repo stars](https://img.shields.io/github/stars/p513817/dih)
 
 ![Codecov](https://img.shields.io/codecov/c/github/p513817/dih)
 ![PyPI - Version](https://img.shields.io/pypi/v/dih)
@@ -17,9 +17,12 @@
 
 </div>
 
-## Install module with PyPI
-[Virtualenv, VirtualenvWrapper](./assets/install-venv.md) is recommended.
+## Requirements
+* [Docker Engine](https://www.docker.com/)
+* [Python](https://www.python.org/) ( >=3.8, <=3.10 )
+* [Virtualenv, VirtualenvWrapper](./assets/install-venv.md) ( Recommended )
 
+## Install module with PyPI
 ```bash
 pip install dih
 ```
