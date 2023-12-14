@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import rich
 from rich import box
 from rich.align import Align
@@ -46,11 +48,11 @@ class RichTable:
         for header in headers:
             self.table.add_column(header)
     
-    def update(self, values: tuple[str], style=""):
+    def update(self, values: Tuple[str], style=""):
         """Update content into table
 
         Args:
-            values (tuple[str]): the value to insert
+            values (Tuple[str]): the value to insert
             style (str, optional): setup color. Defaults to "".
         """
         ss, es = style, style

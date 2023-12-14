@@ -3,7 +3,7 @@ import sys
 import os
 import subprocess
 from collections import defaultdict
-from typing import Optional, List
+from typing import Optional, List, Dict
 import docker
 
 sys.path.append(os.path.dirname(__file__))
@@ -12,7 +12,7 @@ from utils import is_name_excludes, is_name_includes, YamlFile
 class FindDockerImage:
     """Find docker image via specific rule."""
 
-    def find(self, includes: Optional[list]=None, excludes: Optional[list]=None) -> dict[dict]:
+    def find(self, includes: Optional[list]=None, excludes: Optional[list]=None) -> Dict:
         """Find docker image and filter with the includes_key and excludes_key
 
         Args:
@@ -20,7 +20,7 @@ class FindDockerImage:
             excludes (Optional[list], optional): the image name excludes. Defaults to None.
 
         Returns:
-            dict[dict]: the docker image data with an index.
+            Dict: the docker image data with an index.
 
         Examples:
             {

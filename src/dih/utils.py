@@ -4,7 +4,7 @@ import sys
 import importlib
 import yaml
 import re
-from typing import List, Optional, Union, Literal
+from typing import List, Optional, Union, Literal, Tuple
 
 def install_module(module_name):
     try:
@@ -148,7 +148,7 @@ class YamlFile:
             data = yaml.load(yaml_file, Loader=yaml.FullLoader)
         return data
 
-def split_archive_name_ext(file: str) -> tuple[str, str]:
+def split_archive_name_ext(file: str) -> Tuple[str, str]:
     exts = [
         '.tar',
         '.tar.gz',
